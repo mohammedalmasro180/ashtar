@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:ashtar/widgets/buttombar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -55,6 +56,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: white,
       appBar: getAppBar(context),
+      bottomNavigationBar: buttombar(context),
       body: ListView(
         children: <Widget>[
 
@@ -63,7 +65,7 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Ashtar",style: TextStyle(
+                Text("",style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w600
                 ),),
@@ -92,7 +94,6 @@ class _HomePageState extends State<HomePage> {
                       child: Stack(
                         children: <Widget>[
                           Container(
-                            width:400,
                             decoration: BoxDecoration(
                                 color: grey,
                                 borderRadius: BorderRadius.circular(20),
@@ -102,38 +103,92 @@ class _HomePageState extends State<HomePage> {
                                     blurRadius: 2
                                 )]
                             ),
-                            child: Column(
+
+                            child: Stack(
                               children: <Widget>[
-                                Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(top: 20),
-                                    child: Container(
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: Image.network(
+                                      img.toString(),
+                                    height: 300,
+                                    width: 500,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 220,left: 44),
 
-                                      padding: EdgeInsets.all(60),
 
-                                      width: 280,
-                                      height: 180,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(image: NetworkImage(img),fit: BoxFit.cover)
-                                      ),
+                                  child: Container(
+
+                                    color: Colors.black45,
+                                    width: 500,
+                                    child: Row(
+
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Padding(
+
+                                                padding:EdgeInsets.all(5),
+                                                child: Text(
+                                                  text.toString(),
+                                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
+                                                )),
+                                            Padding(
+
+                                                padding:EdgeInsets.all(5),
+                                                child: Text(
+                                                  price.toString()+"\$",
+                                                  style: TextStyle(color: Colors.white,  fontSize: 18.0,backgroundColor: Colors.black12),
+                                                )),
+                                          ],
+                                        ),
+
+                                        Column(
+                                          children: [
+
+                                            Row(
+                                              children: [
+                                                Padding(
+
+                                                    padding:EdgeInsets.all(5),
+                                                    child: Text(
+                                                      "20",
+                                                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
+                                                    )),
+                                                Padding(
+
+                                                    padding:EdgeInsets.all(5),
+                                                    child: Icon(Icons.favorite,color: Colors.white,)
+                                                ),
+                                                Padding(
+
+                                                    padding:EdgeInsets.all(5),
+                                                    child: Text(
+                                                      "20",
+                                                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
+                                                    )),
+                                                Padding(
+
+                                                    padding:EdgeInsets.all(5),
+                                                    child: Icon(Icons.ac_unit,color: Colors.white,)
+                                                ),
+
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+
+                                      ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 15,),
-                                Text(text.toString(),style: TextStyle(
-                                    fontSize:17,
-                                    fontWeight: FontWeight.w600
-                                ),),
-                                SizedBox(height: 15,),
-                                Text("\$ "+price.toString(),style: TextStyle(
-                                    fontSize:16,
-                                    fontWeight: FontWeight.w500
-                                ),),
-
-                                SizedBox(height: 25,)
                               ],
-
                             ),
+
                           ),
 ]                      )
                   ),

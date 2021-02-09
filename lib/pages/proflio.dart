@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:ashtar/pages/profile.dart';
 import 'package:ashtar/theme/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:ashtar/widgets/app_bar.dart';
@@ -60,53 +61,62 @@ class _profiloState extends State<profilo> {
     //scrollDirection: Axis.horizontal,
 
     itemBuilder: (context, index) {
+      var text = users[index]['name'];
+      var img = users[index]['path'];
+      var id = users[index]['id'];
 
-      var text=users[index]['name'];
-      var img=users[index]['path'];
 
+      return Padding(padding: EdgeInsets.all(10), child: InkWell(onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (_) =>
+            UserProfilePage(
+              id: id,
 
-      return Padding(padding: EdgeInsets.all(10),
-    child:   Container(
-    width:400,
-    decoration: BoxDecoration(
-      color: grey,
-      borderRadius: BorderRadius.circular(20),
-      boxShadow: [BoxShadow(
-      spreadRadius: 1,
-      color: black.withOpacity(0.1),
-      blurRadius: 2
-      )]
-      ),
-    child: Column(
-      children: <Widget>[
-        Padding(padding: EdgeInsets.all(40),
-          child: Container(
-            width: 150.0,
-            height: 150.0,
-            decoration: new BoxDecoration(
-                shape: BoxShape.circle,
-                image: new DecorationImage(
-                    fit: BoxFit.fill,
-                    image: new NetworkImage(
-                      img
+            )));
+      },
 
-                    )
-                )
-        ),
+        child: Container(
+          width: 400,
+          decoration: BoxDecoration(
+              color: grey,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [BoxShadow(
+                  spreadRadius: 1,
+                  color: black.withOpacity(0.1),
+                  blurRadius: 2
+              )
+              ]
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.all(40),
+                child: Container(
+                  width: 150.0,
+                  height: 150.0,
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new NetworkImage(
+                              img
 
+                          )
+                      )
+                  ),
+
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top: 15),
+                child: Text(text.toString(),),
+              )
+            ],
           ),
         ),
-        Padding(padding: EdgeInsets.only(top: 15),
-          child:Text(text.toString(),),
-        )
-      ],
-    ),
-    ),
+      ),
 
       );
-    }
-    ),
+    }      ),
       ),
+
     );
 
   }

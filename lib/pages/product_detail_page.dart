@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:ashtar/pages/profile.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -25,8 +26,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   var price;
   var width;
   var hiegth;
-   var story;
-   var artist;
+  var story;
+  var artist;
+  var artistid;
   var name;
   var img;
   List users = [];
@@ -46,20 +48,22 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     var url = "http://dev-ishtar.96.lt/ishtar-backend/public/painting/${widget.id}";
     var response = await http.get(url);
     // print(response.body);
-      map = json.decode(response.body);
-      //List<dynamic> data = ;
+    map = json.decode(response.body);
+    //List<dynamic> data = ;
     print(map["Data"]["price"]);
     setState(() {
       name= map["Data"]["name"];
       price= map["Data"]["price"];
       img= map["Data"]["image"];
+      artistid=  map["Data"]["artistID"];
+
+
       artist= map["Data"]["artist"];
       hiegth= map["Data"]["height"];
       width= map["Data"]["height"];
       story= map["Data"]["story"];
       isLoading = false;
     });
-
 
 
 
@@ -119,7 +123,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       width: 280,
                       height: 180,
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: NetworkImage(img.toString()),fit: BoxFit.cover)
+                          image: DecorationImage(image: NetworkImage(img.toString()),fit: BoxFit.cover)
                       ),
                     ),
                   ),
@@ -280,6 +284,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                     ),
                     Padding(padding: const EdgeInsets.all(10),
+                      child: InkWell(onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (_) =>
+                            UserProfilePage(
+                              id: artistid,
+
+                            )));
+
+                      },
                       child: Text(artist.toString(),
 
                         style: TextStyle(
@@ -288,7 +300,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             fontWeight: FontWeight.w600,
                             height: 1.5
                         ),
-                      ),
+                      ),)
                     ),
 
                   ]
