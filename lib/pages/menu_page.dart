@@ -42,7 +42,7 @@ class _MenuPageState extends State<MenuPage> {
           children: List.generate(menuItems.length, (index){
             return Padding(padding: EdgeInsets.only(bottom: 45),child: InkWell(
               onTap: (){
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => HomePage()), (route) => false);
+                //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => HomePage()), (route) => false);
                 // Navigator.pop(context);
               },
               child: ElasticIn(

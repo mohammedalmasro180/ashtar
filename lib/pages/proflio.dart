@@ -34,7 +34,7 @@ class _profiloState extends State<profilo> {
     // print(response.body);
     if (response.statusCode == 200) {
       map = json.decode(response.body);
-      map = json.decode(response.body);
+      //map = json.decode(response.body);
 
 
       var data=map['Data'];
@@ -94,6 +94,7 @@ class _profiloState extends State<profilo> {
                   height: 150.0,
                   decoration: new BoxDecoration(
                       shape: BoxShape.circle,
+
                       image: new DecorationImage(
                           fit: BoxFit.fill,
                           image: new NetworkImage(
