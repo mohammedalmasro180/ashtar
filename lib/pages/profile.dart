@@ -76,7 +76,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
         width: 140.0,
         height: 140.0,
         decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(img.toString()),fit: BoxFit.cover,  ),
+          image: DecorationImage(image: NetworkImage(img.toString()),fit: BoxFit.cover,  ),
 
           borderRadius: BorderRadius.circular(80.0),
           border: Border.all(

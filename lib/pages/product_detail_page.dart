@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:ashtar/constant/myctrl.dart';
 import 'package:ashtar/pages/profile.dart';
+import 'package:ashtar/widgets/app_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -24,13 +26,17 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   Map map;
   int i = 1;
   var price;
+  Map mapp;
   var width;
   var hiegth;
   var story;
   var artist;
+  var artistname;
+  var imtg;
   var artistid;
   var name;
   var img;
+  myctrl ctrl;
   List users = [];
   bool isLoading = false;
 
@@ -41,6 +47,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     this.fetchUser();
   }
 
+
   fetchUser() async {
     setState(() {
       isLoading = true;
@@ -49,13 +56,21 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     var response = await http.get(url);
     // print(response.body);
     map = json.decode(response.body);
+    artistid=  map["Data"]["artistID"];
+    var urll  = "http://dev-ishtar.96.lt/ishtar-backend/public/artist/${artistid}";
+    var resonse = await http.get(urll);
+    mapp = json.decode(resonse.body);
+    imtg=mapp['Data']['path'];
+    artistname=mapp['Data']['name'];
+
+
     //List<dynamic> data = ;
     print(map["Data"]["price"]);
     setState(() {
       name= map["Data"]["name"];
       price= map["Data"]["price"];
       img= map["Data"]["image"];
-      artistid=  map["Data"]["artistID"];
+
 
 
       artist= map["Data"]["artist"];
@@ -72,44 +87,18 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
     @override
     Widget build(BuildContext context) {
+
+
       //String url=users[2]['image'];
 
 
       return Scaffold(
+        appBar: getAppBar(context),
         backgroundColor: white,
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                decoration: BoxDecoration(
-                    boxShadow: [BoxShadow(
-                      blurRadius: 2,
-                      color: black.withOpacity(0.1),
-                      spreadRadius: 1,
-                    )
-                    ],
-                    borderRadius: BorderRadius.circular(30),
-                    color: grey
 
-                ),
-                child: Stack(
-                  children: <Widget>[
-
-                    SafeArea(
-                      child: IconButton(
-                          icon: Icon(Icons.arrow_back_ios, color: black,),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          }),
-                    )
-
-                  ],
-                ),
-              ),
               SizedBox(height: 30,),
               FadeInDown(
                 delay: Duration(
@@ -131,6 +120,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               ),
 
               SizedBox(height: 30,),
+
               FadeInDown(
                 delay: Duration(
                     milliseconds: 350
@@ -179,16 +169,55 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
 
                   children: <Widget>[
-
                     Padding(padding: const EdgeInsets.only(left: 25, right: 25),
                       child: Icon((Icons.favorite)),
                     ),
                     Padding(padding: const EdgeInsets.only(left: 25, right: 25),
                       child: Icon((Icons.shopping_cart)),
                     ),
+
                   ],
 
                 ),
+              ),
+              Row(
+                children: [
+
+                  Padding(padding: EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 70.0,
+                      height: 70.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(image: NetworkImage(imtg.toString()),fit: BoxFit.cover,  ),
+
+                        borderRadius: BorderRadius.circular(80.0),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 10.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(8.0),
+                  child: Text(artistname.toString(),style: TextStyle(color: Colors.lime,fontSize: 25),),),
+                  Padding(padding: EdgeInsets.all(8),
+                  child: InkWell(onTap: (){},
+                  child: Container(
+                    width: 100,
+                    height: 55,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [BoxShadow(
+                            spreadRadius: 1,
+                            color: Colors.amber,
+                            blurRadius: 2
+                        )]
+                    ),
+                    child: Center(child: Text("FOLLOW",style: TextStyle(color: Colors.black,fontSize: 15),)),
+
+                  ),),)
+                ],
               ),
               Row(
                   children: <Widget>[

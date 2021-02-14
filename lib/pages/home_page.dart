@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       color: Color.fromRGBO(221, 221, 221, 1),
                       child: TextField(
-                        controller: controller,
+                        controller: artist,
                         autofocus: false,
                         decoration: InputDecoration(
                           labelText: 'by artist',
