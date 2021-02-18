@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:ashtar/pages/home_page.dart';
+import 'package:ashtar/pages/homee.dart';
 import 'package:ashtar/pages/mytest.dart';
 import 'package:ashtar/pages/product_detail_page.dart';
 import 'package:ashtar/theme/colors.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Ishtar',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(),
+      home: homemin(),
     );
   }
 }

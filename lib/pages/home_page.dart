@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       color: Color.fromRGBO(221, 221, 221, 1),
                       child: TextField(
-                        controller: artist,
+                        controller: controller,
                         autofocus: false,
                         decoration: InputDecoration(
                           labelText: 'by artist',
@@ -188,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 var artist=users[index]['artist'];
 
                 return text.toLowerCase().contains(filter.toLowerCase())
-                && artist.toLowerCase().contains(filterartist.toLowerCase())
+                    && artist.toLowerCase().contains(filterartist.toLowerCase())
                     ? FadeInDown(
                   duration: Duration(milliseconds: 350 * index),
                   child: Padding(

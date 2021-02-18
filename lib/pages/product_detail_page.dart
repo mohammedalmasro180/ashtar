@@ -277,6 +277,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         style: TextStyle(
                             fontSize: 20,
 
+
                             height: 1.5
                         ),
                       ),
@@ -313,23 +314,23 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                     ),
                     Padding(padding: const EdgeInsets.all(10),
-                      child: InkWell(onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_) =>
-                            UserProfilePage(
-                              id: artistid,
+                        child: InkWell(onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (_) =>
+                              UserProfilePage(
+                                id: artistid,
 
-                            )));
+                              )));
 
-                      },
-                      child: Text(artist.toString(),
+                        },
+                          child: Text(artist.toString(),
 
-                        style: TextStyle(
-                            color: Colors.lime,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            height: 1.5
-                        ),
-                      ),)
+                            style: TextStyle(
+                                color: Colors.lime,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                height: 1.5
+                            ),
+                          ),)
                     ),
 
                   ]
