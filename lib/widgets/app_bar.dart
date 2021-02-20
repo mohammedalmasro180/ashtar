@@ -1,4 +1,8 @@
 
+import 'package:passwordfield/passwordfield.dart';
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import 'package:ashtar/pages/proflio.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +10,21 @@ import 'package:flutter/material.dart';
 import 'package:ashtar/pages/cart_page.dart';
 import 'package:ashtar/pages/menu_page.dart';
 import 'package:ashtar/theme/colors.dart';
+TextEditingController username = new TextEditingController();
+TextEditingController  email= new TextEditingController();
+TextEditingController  password= new TextEditingController();
+TextEditingController confirmpassword= new TextEditingController();
+
 
 Widget getAppBar(context){
-    return AppBar(title:  Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
+
+  return AppBar(title:  Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
     backgroundColor: Colors.amber,
 
+
+
       actions:[
+
 
         Padding(padding: EdgeInsets.all(10),
         child: InkWell(onTap: (){
@@ -88,7 +101,7 @@ Widget getAppBar(context){
                                 margin: EdgeInsets.all(20),
                                 child: FlatButton(
                                   child: Text('Login'),
-                                  color: Colors.amberAccent,
+                                 color: Colors.amberAccent,
                                   textColor: Colors.black,
                                   onPressed: () {},
                                 ),
@@ -126,8 +139,9 @@ Widget getAppBar(context){
                             ),
 
                             TextField(
-                              //controller: ussename,
+                              controller: username,
                               decoration: InputDecoration(
+
 
                                 labelText: "Username ",
                                 labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
@@ -145,10 +159,10 @@ Widget getAppBar(context){
                                 ),
                               ),
                             ),
-                            SizedBox(height: 16,),
                             TextField(
-                              //controller: ussename,
+                              controller: email,
                               decoration: InputDecoration(
+
 
                                 labelText: "Email ",
                                 labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
@@ -167,12 +181,13 @@ Widget getAppBar(context){
                               ),
                             ),
                             SizedBox(height: 16,),
-
-
                             TextField(
 
+
                               decoration: InputDecoration(
-                                labelText: "Password",
+
+
+                                labelText: "Name",
                                 labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -188,26 +203,28 @@ Widget getAppBar(context){
                                 ),
                               ),
                             ),
-                            SizedBox(height: 12,),
-                            TextField(
-
-                              decoration: InputDecoration(
-                                labelText: "Confirm Password",
-                                labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
-                                enabledBorder: OutlineInputBorder(
+                            SizedBox(height: 16,),
+                            PasswordField(
+                              controller: password,
+                              color: Colors.white,
+                              hasFloatingPlaceholder: true,
+                              pattern: r'.*[@$#.*].*',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(2),
+                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                              focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                    )
-                                ),
-                              ),
+                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                              errorMessage: 'must contain special character either . * @ # \$',
                             ),
+
+                            SizedBox(height: 16,),
+
+
+
+
+
+
                             SizedBox(height: 12,),
                             Container(
                               height: 100,
@@ -218,7 +235,9 @@ Widget getAppBar(context){
                                   child: Text('Signup'),
                                   color: Colors.amberAccent,
                                   textColor: Colors.black,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                singup();
+                                  },
                                 ),
                               ),
                             ),
@@ -241,8 +260,29 @@ Widget getAppBar(context){
           }
           );
         },
-          child: Text("Atrits",style: TextStyle(fontSize: 20,color: Colors.black),),),)
+          child: Icon(Icons.account_box_sharp,color: Colors.black,),),)
         ]
 
     );
   }
+Future<List> singup() async {
+    print(username.text);
+    print(email.text);
+    print(password.text);var headers = {
+      'Authorization': 'Bearer Basic CUJDNzc5UUFTTE42RTVCU1ZVN1JYOTYyVVc2VTZRRjZD',
+      'Content-Type': 'text/plain'
+    };
+    var request = http.Request('POST', Uri.parse('http://dev-ishtar.96.lt/ishtar-backend/public/register'));
+    request.body = '''{\r\n"username":"${username.text}",\r\n"password":"${password.text}",\r\n"email":"${email.text}",\r\n"image":"pp0ppppp"\r\n}''';
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    }
+    else {
+      print(response.statusCode);
+    }
+
+}

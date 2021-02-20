@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       color: Color.fromRGBO(221, 221, 221, 1),
                       child: TextField(
-                        controller: controller,
+                        controller: artist,
                         autofocus: false,
                         decoration: InputDecoration(
                           labelText: 'by artist',
@@ -229,70 +229,73 @@ class _MyHomePageState extends State<MyHomePage> {
                                         padding: const EdgeInsets.only(top: 220,left: 44),
 
 
-                                        child: Container(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
 
-                                          color: Colors.black45,
-                                          width: 500,
-                                          child: Row(
+                                            color: Colors.black45,
+                                            width: 500,
+                                            child: Row(
 
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                                            children: [
-                                              Column(
-                                                children: [
-                                                  Padding(
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Padding(
 
-                                                      padding:EdgeInsets.all(5),
-                                                      child: Text(
-                                                        text.toString(),
-                                                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
-                                                      )),
-                                                  Padding(
+                                                        padding:EdgeInsets.all(5),
+                                                        child: Text(
+                                                          text.toString(),
+                                                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
+                                                        )),
+                                                    Padding(
 
-                                                      padding:EdgeInsets.all(5),
-                                                      child: Text(
-                                                        price.toString()+"\$",
-                                                        style: TextStyle(color: Colors.white,  fontSize: 18.0,backgroundColor: Colors.black12),
-                                                      )),
-                                                ],
-                                              ),
+                                                        padding:EdgeInsets.all(5),
+                                                        child: Text(
+                                                          price.toString()+"\$",
+                                                          style: TextStyle(color: Colors.white,  fontSize: 18.0,backgroundColor: Colors.black12),
+                                                        )),
+                                                  ],
+                                                ),
 
-                                              Column(
-                                                children: [
+                                                Column(
+                                                  children: [
 
-                                                  Row(
-                                                    children: [
-                                                      Padding(
+                                                    Row(
+                                                      children: [
+                                                        Padding(
 
-                                                          padding:EdgeInsets.all(5),
-                                                          child: Text(
-                                                            "20",
-                                                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
-                                                          )),
-                                                      Padding(
+                                                            padding:EdgeInsets.all(5),
+                                                            child: Text(
+                                                              "20",
+                                                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
+                                                            )),
+                                                        Padding(
 
-                                                          padding:EdgeInsets.all(5),
-                                                          child: Icon(Icons.favorite,color: Colors.white,)
-                                                      ),
-                                                      Padding(
+                                                            padding:EdgeInsets.all(5),
+                                                            child: Icon(Icons.favorite,color: Colors.white,)
+                                                        ),
+                                                        Padding(
 
-                                                          padding:EdgeInsets.all(5),
-                                                          child: Text(
-                                                            "20",
-                                                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
-                                                          )),
-                                                      Padding(
+                                                            padding:EdgeInsets.all(5),
+                                                            child: Text(
+                                                              "20",
+                                                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0,backgroundColor: Colors.black12),
+                                                            )),
+                                                        Padding(
 
-                                                          padding:EdgeInsets.all(5),
-                                                          child: Icon(Icons.ac_unit,color: Colors.white,)
-                                                      ),
+                                                            padding:EdgeInsets.all(5),
+                                                            child: Icon(Icons.ac_unit,color: Colors.white,)
+                                                        ),
 
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
 
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
