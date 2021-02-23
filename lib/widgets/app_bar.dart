@@ -1,4 +1,6 @@
 
+
+import 'package:flutter/cupertino.dart';
 import 'package:passwordfield/passwordfield.dart';
 
 import 'package:http/http.dart' as http;
@@ -11,8 +13,10 @@ import 'package:ashtar/pages/cart_page.dart';
 import 'package:ashtar/pages/menu_page.dart';
 import 'package:ashtar/theme/colors.dart';
 TextEditingController username = new TextEditingController();
+TextEditingController userlog = new TextEditingController();
 TextEditingController  email= new TextEditingController();
 TextEditingController  password= new TextEditingController();
+TextEditingController  passwordlog= new TextEditingController();
 TextEditingController confirmpassword= new TextEditingController();
 
 
@@ -27,12 +31,13 @@ Widget getAppBar(context){
 
 
         Padding(padding: EdgeInsets.all(10),
-        child: InkWell(onTap: (){
+        child: InkWell
+          (onTap: (){
           showDialog(context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              content: Center(
-                child: SingleChildScrollView(
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  content: Center(
+                  child: SingleChildScrollView(
                   child: Column(
 
                     children: [
@@ -54,7 +59,7 @@ Widget getAppBar(context){
                             ),
 
                             TextField(
-                              //controller: ussename,
+                              controller: userlog,
                               decoration: InputDecoration(
 
                                 labelText: "Email ",
@@ -74,25 +79,20 @@ Widget getAppBar(context){
                               ),
                             ),
                             SizedBox(height: 16,),
-                            TextField(
-
-                              decoration: InputDecoration(
-                                labelText: "Password",
-                                labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
-                                enabledBorder: OutlineInputBorder(
+                            PasswordField(
+                              controller: passwordlog,
+                              color: Colors.white,
+                              hasFloatingPlaceholder: true,
+                              pattern: r'.*[@$#.*].*',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(2),
+                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                              focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                    )
-                                ),
-                              ),
+                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                              errorMessage: 'must contain special character either . * @ # \$',
                             ),
+
                             SizedBox(height: 12,),
                             Container(
                               height: 100,
@@ -103,7 +103,23 @@ Widget getAppBar(context){
                                   child: Text('Login'),
                                  color: Colors.amberAccent,
                                   textColor: Colors.black,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    login();
+                                    showDialog(context: context,
+                                        builder: (BuildContext context) {
+                                          return Center(
+                                            child: Container(
+                                                color: Colors.white,
+                                                width: 250,
+                                                height: 250,
+                                                child: Center(child: Text("Login Successfully",style: TextStyle(fontSize:15,color: Colors.black),))),
+
+                                          );
+                                        }
+
+                                    );
+
+                                  },
                                 ),
                               ),
                             ),
@@ -237,6 +253,20 @@ Widget getAppBar(context){
                                   textColor: Colors.black,
                                   onPressed: () {
                                 singup();
+                                showDialog(context: context,
+                                    builder: (BuildContext context) {
+                                      return Center(
+                                        child: Container(
+                                            color: Colors.white,
+                                            width: 250,
+                                            height: 250,
+                                            child: Center(child: Text("Signup Successfully",style: TextStyle(fontSize:15,color: Colors.black),))),
+
+                                      );
+                                    }
+
+                                );
+
                                   },
                                 ),
                               ),
@@ -284,5 +314,50 @@ Future<List> singup() async {
     else {
       print(response.statusCode);
     }
+
+}
+Future<void> _showMyDialog() async {
+  return showDialog<void>(
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('AlertDialog Title'),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text('This is a demo alert dialog.'),
+              Text('Would you like to approve of this message?'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Approve'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    }, context: null,
+  );
+}
+Future<void> login() async {var headers = {
+  'Authorization': 'Bearer Basic CUJDNzc5UUFTTE42RTVCU1ZVN1JYOTYyVVc2VTZRRjZD',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('http://dev-ishtar.96.lt/ishtar-backend/public/login_check?username=jjjj@gmail.com&password=12345'));
+request.body = '''{\r\n "username":"${userlog.text}",\r\n "password":"${passwordlog.text}"   \r\n}''';
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.statusCode);
+}
+
 
 }
