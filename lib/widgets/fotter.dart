@@ -46,34 +46,7 @@ class _fotterState extends State<fotter> {
             ),
           ],
         ),
-        Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 55,left: 55),
-              child: Column(
-                children: [
-                  InkWell(onTap: (){
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (context) => homemin()));
-                  },
-                      child: Text("Home",style: TextStyle(fontSize: 15,color: Colors.black,),)),
-                  InkWell(onTap: (){
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (context) => profilo()));
-                  },
-                      child: Text("Artists",style: TextStyle(fontSize: 15,color: Colors.black,),)),
-                  InkWell(onTap: (){
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (context) => MyHomePage()));
-                  },
-                      child: Text("Paintings",style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.bold,),)),
 
-
-                ],
-              ),
-            ),
-          ],
-        ),
 
       ],
     );

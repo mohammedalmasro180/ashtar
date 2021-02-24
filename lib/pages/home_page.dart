@@ -226,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 220,left: 44),
+                                        padding: const EdgeInsets.all(1),
 
 
                                         child: Padding(
@@ -286,7 +286,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         Padding(
 
                                                             padding:EdgeInsets.all(5),
-                                                            child: Icon(Icons.ac_unit,color: Colors.white,)
+                                                            child: Image.network("https://img.icons8.com/android/25/ffffff/visible.png")
                                                         ),
 
                                                       ],

@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:ashtar/pages/profile.dart';
+import 'package:ashtar/theme/colors.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -47,32 +49,74 @@ class _ArtistsState extends State<Artists> {
   Widget build(BuildContext context) {
     return GridView.builder(
         gridDelegate:
-        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+
+
         itemCount: users.length,
         //scrollDirection: Axis.horizontal,
 
         itemBuilder: (context, index) {
-          var img=users[index]['path'];
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
+          var text = users[index]['name'];
+          var img = users[index]['path'];
+          var id = users[index]['id'];
+          var painting = users[index]['painting'];
+
+
+          return Padding(padding: EdgeInsets.all(10), child: InkWell(onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) =>
+                UserProfilePage(
+                  id: id,
+
+                )));
+          },
+
             child: Container(
-              width: 150.0,
-              height: 150.0,
-              decoration: new BoxDecoration(
-                  shape: BoxShape.circle,
-
-                  image: new DecorationImage(
-                      fit: BoxFit.fill,
-                      image: new NetworkImage(
-                          img
-
-                      )
+              width: 400,
+              height: 250,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [BoxShadow(
+                      spreadRadius: 2,
+                      color: Colors.limeAccent,
+                      blurRadius: 2
                   )
+                  ]
               ),
+              child: Column(
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(40),
+                    child: Container(
+                      width: 150.0,
+                      height: 150.0,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
 
+                          image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image: new NetworkImage(
+                                  img
+
+                              )
+                          )
+                      ),
+
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 15),
+
+                    child: Text(text.toString(),style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 15,left: 15),
+                    child: Text("Painting/s   "+painting.toString(),style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
+                  ),
+
+                ],
+              ),
             ),
+          ),
+
           );
-        }
-    );
+        }      );
   }
 }

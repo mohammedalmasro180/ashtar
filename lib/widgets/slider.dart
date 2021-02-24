@@ -13,34 +13,28 @@ class _sliderState extends State<slider> {
       child: CarouselSlider(
           autoPlay: true,
           items:[
-           '  With Ishtar, we try to unite artists from Syria and all over the world, to make, share and contribute with others, because we believe in the power of inspiration,',
-            '  With Ishtar, we try to unite artists from Syria and all over the world, to make, share and contribute with others, because we believe in the power of inspiration,',
+           '  With Ishtar, we try to unite artists from Syria and all over the world, ',
+
 ].map((i){
             return Builder(
                 builder:(BuildContext context){
                   return Container(
+                    color: Colors.black45,
+                    width: double.infinity,
+                    height: 50,
+                    child: Center(
+                      child: GestureDetector(
 
-                    width: MediaQuery.of(context).size.width,
-                    child: Container(
-                      color: Colors.black45,
-                      width: 650,
-                      height: 50,
-                      child: Center(
-                        child: GestureDetector(
+                        child:Stack(
+                          children: <Widget>[
 
-                          child:Stack(
-                            children: <Widget>[
-
-                              Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                      width: 350,
-                                      child: Text(i.toString(),style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold,),))
-                              )
-                            ],
-                          ),
-
+                            Align(
+                                alignment: Alignment.center,
+                                child: Text(i.toString(),style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold,),)
+                            )
+                          ],
                         ),
+
                       ),
                     ),
                   );

@@ -1,3 +1,4 @@
+import 'package:ashtar/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -46,7 +47,7 @@ class _mostseenState extends State<mostseen> {
   Widget build(BuildContext context) {
     return GridView.builder(
         gridDelegate:
-        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
 
         itemCount: users.length,
         //scrollDirection: Axis.horizontal,
@@ -70,15 +71,15 @@ class _mostseenState extends State<mostseen> {
                 Container(
 
                   color: Colors.white,
-                  width: 400,
-                  height:295,
+                  width: double.infinity,
+                  height:600,
                   alignment: Alignment.topCenter,
                   child: Column(
 
                     children: [
                       Image.network(
                         img.toString(),
-                        height: 150,
+                        height: 200,
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
@@ -119,30 +120,125 @@ class _mostseenState extends State<mostseen> {
                                   ),
                                 ),  ],
                             ),
-                            Divider(height: 60, color: Colors.black,),
+                            Divider(height: 10, color: Colors.black,),
+
                             Row(
-                              children: [
-                                Padding(padding: const EdgeInsets.all(1),
-                                  child: Text("Artist Name :",
+                                children: <Widget>[
+                                  Padding(padding: const EdgeInsets.all(10),
+                                    child: Text("Height",
 
-                                    style: TextStyle(
-                                        fontSize: 15,
+                                      style: TextStyle(
+                                          fontSize: 13,
 
-                                        height: 1.5
+                                          height: 1.5
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Padding(padding: const EdgeInsets.all(0),
-                                  child: Text(artist.toString(),
+                                  Padding(padding: const EdgeInsets.all(10),
+                                    child: Text(hiegth.toString(),
 
-                                    style: TextStyle(
-                                        fontSize: 15,
-
-                                        height: 1.5
+                                      style: TextStyle(
+                                          color: Colors.lime,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.5
+                                      ),
                                     ),
                                   ),
-                                ),  ],
+                                  Padding(padding: const EdgeInsets.all(10),
+                                    child: Text("Width ",
+
+                                      style: TextStyle(
+                                          fontSize: 13,
+
+                                          height: 1.5
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.all(10),
+                                    child: Text(width.toString(),
+
+                                      style: TextStyle(
+                                          color: Colors.lime,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.5
+                                      ),
+                                    ),
+                                  ),
+
+                                ]
                             ),
+                            Divider(height: 10, color: Colors.black,),
+                            Row(
+                                children: <Widget>[
+
+
+                                  Padding(padding: const EdgeInsets.all(10),
+                                    child: Text("Story",
+
+                                      style: TextStyle(
+                                          fontSize: 13,
+
+
+                                          height: 1.5
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.all(10),
+                                    child: Text(story.toString(),
+
+                                      style: TextStyle(
+                                          color: Colors.lime,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.5
+                                      ),
+                                    ),
+                                  ),
+
+                                ]
+                            ),
+
+
+                            Divider(height: 10, color: Colors.black,),
+                            Row(
+                                children: <Widget>[
+
+
+                                  Padding(padding: const EdgeInsets.all(10),
+                                    child: Text("Artist",
+
+                                      style: TextStyle(
+                                          fontSize: 13,
+
+                                          height: 1.5
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.all(10),
+                                      child: InkWell(onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (_) =>
+                                            UserProfilePage(
+                                              id: id,
+
+                                            )));
+
+                                      },
+                                        child: Text(artist.toString(),
+
+                                          style: TextStyle(
+                                              color: Colors.lime,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                              height: 1.5
+                                          ),
+                                        ),)
+                                  ),
+
+                                ]
+                            ),
+
 
 
                           ]

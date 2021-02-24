@@ -3,6 +3,7 @@ import 'package:ashtar/pages/home_page.dart';
 import 'package:ashtar/pages/proflio.dart';
 import 'package:ashtar/widgets/Artists.dart';
 import 'package:ashtar/widgets/app_bar.dart';
+import 'package:ashtar/widgets/drawar.dart';
 import 'package:ashtar/widgets/fotter.dart';
 import 'package:ashtar/widgets/mostseen.dart';
 import 'package:ashtar/widgets/slider.dart';
@@ -19,6 +20,7 @@ class _homeminState extends State<homemin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: getAppBar(context),
+      drawer: drawer(),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -37,6 +39,17 @@ class _homeminState extends State<homemin> {
                         child:  Text("About Ishtar",style: TextStyle(fontSize: 35,color: Colors.black,fontWeight: FontWeight.bold,),),
                       ),
                       Container(
+                        width: 450,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [BoxShadow(
+                                spreadRadius: 2,
+                                color: Colors.limeAccent,
+                                blurRadius: 2
+                            )
+                            ]
+                        ),
                         child:  Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text("Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is the counterpart to the Sumerian Inanna, and is the cognate for the Northwest Semitic Aramean goddess Astarte.",style: TextStyle(fontSize: 15,color: Colors.black,),),
@@ -61,7 +74,7 @@ class _homeminState extends State<homemin> {
                         },
 
 
-                            child: Text("VIEW ALL",style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.bold,),)),
+                            child: Text("VIEW ALL",style: TextStyle(fontSize: 15,color: Colors.blue,fontWeight: FontWeight.bold, decoration: TextDecoration.underline,),)),
 
                       ),
                       Container(
@@ -70,7 +83,8 @@ class _homeminState extends State<homemin> {
                       ),
 
                       Container(
-                        height: 150,
+
+                        height: 450,
                         width: 450,
                         child: Artists(),
                       ),
@@ -80,7 +94,7 @@ class _homeminState extends State<homemin> {
                           Navigator.pushReplacement(
                               context, MaterialPageRoute(builder: (context) => profilo()));
                         },
-                            child: Text("VIEW ALL",style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.bold,),)),
+                            child: Text("VIEW ALL",style: TextStyle(fontSize: 15,color: Colors.blue,fontWeight: FontWeight.bold, decoration: TextDecoration.underline,),)),
 
                       ),
                       Container(

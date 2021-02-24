@@ -21,9 +21,121 @@ TextEditingController confirmpassword= new TextEditingController();
 
 
 Widget getAppBar(context){
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   return AppBar(title:  Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
-    backgroundColor: Colors.amber,
+    backgroundColor: Colors.white ,
+      leading:  InkWell
+        (onTap: (){
+        showDialog(context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Center(
+                    child: SingleChildScrollView(
+                      child: Column(
+
+                        children: [
+                          Container(
+                            width: 450,
+                              color: Colors.limeAccent[300],
+
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(padding: const EdgeInsets.all(10.0), 
+                                        child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(onTap: (){},
+                                          child: Text("Home",style: TextStyle(fontSize:15,color: Colors.black),),),
+                                      )
+                                    ],
+                                  ),
+
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(onTap: (){},
+                                          child: Text("Artists",style: TextStyle(fontSize:15,color: Colors.black),),),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(onTap: (){},
+                                          child: Text("Paintings",style: TextStyle(fontSize:15,color: Colors.black),),),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(onTap: (){},
+                                          child: Text("About us",style: TextStyle(fontSize:15,color: Colors.black),),),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(onTap: (){},
+                                          child: Text("FAQ",style: TextStyle(fontSize:15,color: Colors.black),),),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(onTap: (){},
+                                          child: Text("Imprint",style: TextStyle(fontSize:15,color: Colors.black),),),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(onTap: (){},
+                                          child: Text("Data Processing",style: TextStyle(fontSize:15,color: Colors.black),),),
+                                      )
+                                    ],
+                                  ),
+
+
+
+
+
+
+
+                                ],
+                              ),
+                            )
+                          ),
+
+
+                        ],
+
+                      ),
+                    )
+
+                ),
+              );
+            }
+        );
+  },
+       child:Icon(Icons.list,color: Colors.black,) ,),
 
 
 
@@ -37,263 +149,265 @@ Widget getAppBar(context){
               builder: (BuildContext context) {
                 return AlertDialog(
                   content: Center(
-                  child: SingleChildScrollView(
-                  child: Column(
-
-                    children: [
-                      Container(
-                        width: 450,
-                        color: Colors.limeAccent[300],
-
+                      child: SingleChildScrollView(
                         child: Column(
+
                           children: [
-                            Padding(padding: EdgeInsets.all(10),
-                              child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
-                            ),
-                            Padding(padding: EdgeInsets.all(10),
-                                child: Text("Welcome in Ishtar",style: TextStyle(fontSize: 30),)
-                            ),
-                            Divider(height: 20,),
-                            Padding(padding: EdgeInsets.all(10),
-                                child: Text("To login please fill the boxes below:",style: TextStyle(fontSize: 10),)
-                            ),
-
-                            TextField(
-                              controller: userlog,
-                              decoration: InputDecoration(
-
-                                labelText: "Email ",
-                                labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                    )
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 16,),
-                            PasswordField(
-                              controller: passwordlog,
-                              color: Colors.white,
-                              hasFloatingPlaceholder: true,
-                              pattern: r'.*[@$#.*].*',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
-                              errorMessage: 'must contain special character either . * @ # \$',
-                            ),
-
-                            SizedBox(height: 12,),
                             Container(
-                              height: 100,
-                              width: double.infinity,
-                              child:       Container(
-                                margin: EdgeInsets.all(20),
-                                child: FlatButton(
-                                  child: Text('Login'),
-                                 color: Colors.amberAccent,
-                                  textColor: Colors.black,
-                                  onPressed: () {
-                                    login();
-                                    showDialog(context: context,
-                                        builder: (BuildContext context) {
-                                          return Center(
-                                            child: Container(
-                                                color: Colors.white,
-                                                width: 250,
-                                                height: 250,
-                                                child: Center(child: Text("Login Successfully",style: TextStyle(fontSize:15,color: Colors.black),))),
+                              width: 450,
+                              color: Colors.limeAccent[300],
+
+                              child: Column(
+                                children: [
+                                  Padding(padding: EdgeInsets.all(10),
+                                    child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
+                                  ),
+                                  Padding(padding: EdgeInsets.all(10),
+                                      child: Text("Welcome in Ishtar",style: TextStyle(fontSize: 30),)
+                                  ),
+                                  Divider(height: 20,),
+                                  Padding(padding: EdgeInsets.all(10),
+                                      child: Text("To login please fill the boxes below:",style: TextStyle(fontSize: 10),)
+                                  ),
+
+                                  TextField(
+                                    controller: userlog,
+                                    decoration: InputDecoration(
+
+                                      labelText: "Email ",
+                                      labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: Colors.grey.shade300,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: Colors.red,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 16,),
+                                  PasswordField(
+                                    controller: passwordlog,
+                                    color: Colors.white,
+                                    hasFloatingPlaceholder: true,
+                                    pattern: r'.*[@$#.*].*',
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(2),
+                                        borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                                    errorMessage: 'must contain special character either . * @ # \$',
+                                  ),
+
+                                  SizedBox(height: 12,),
+                                  Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    child:       Container(
+                                      margin: EdgeInsets.all(20),
+                                      child: FlatButton(
+                                        child: Text('Login'),
+                                        color: Colors.amberAccent,
+                                        textColor: Colors.black,
+                                        onPressed: () {
+                                          login();
+                                          showDialog(context: context,
+                                              builder: (BuildContext context) {
+                                                return Center(
+                                                  child: Container(
+                                                      color: Colors.white,
+                                                      width: 250,
+                                                      height: 250,
+                                                      child: Center(child: Text("Login Successfully",style: TextStyle(fontSize:15,color: Colors.black),))),
+
+                                                );
+                                              }
 
                                           );
-                                        }
 
-                                    );
-
-                                  },
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Image.network("http://ishtar-art.de/assets/slider-images/7.png",width: 200,height: 200,),
-
-                              ],
-                            )
-
-
-
-
-
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 450,
-                        color: Colors.limeAccent[300],
-
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.all(10),
-                              child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
-                            ),
-                            Padding(padding: EdgeInsets.all(10),
-                                child: Text("Welcome in Ishtar",style: TextStyle(fontSize: 30),)
-                            ),
-                            Divider(height: 20,),
-                            Padding(padding: EdgeInsets.all(10),
-                                child: Text("To signup please fill the boxes below:",style: TextStyle(fontSize: 10),)
-                            ),
-
-                            TextField(
-                              controller: username,
-                              decoration: InputDecoration(
-
-
-                                labelText: "Username ",
-                                labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
+                                        },
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                    )
-                                ),
+                                  Row(
+                                    children: [
+                                      Image.network("http://ishtar-art.de/assets/slider-images/7.png",width: 200,height: 200,),
+
+                                    ],
+                                  )
+
+
+
+
+
+                                ],
                               ),
                             ),
-                            TextField(
-                              controller: email,
-                              decoration: InputDecoration(
-
-
-                                labelText: "Email ",
-                                labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                    )
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 16,),
-                            TextField(
-
-
-                              decoration: InputDecoration(
-
-
-                                labelText: "Name",
-                                labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                    )
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 16,),
-                            PasswordField(
-                              controller: password,
-                              color: Colors.white,
-                              hasFloatingPlaceholder: true,
-                              pattern: r'.*[@$#.*].*',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
-                              errorMessage: 'must contain special character either . * @ # \$',
-                            ),
-
-                            SizedBox(height: 16,),
-
-
-
-
-
-
-                            SizedBox(height: 12,),
                             Container(
-                              height: 100,
-                              width: double.infinity,
-                              child:       Container(
-                                margin: EdgeInsets.all(20),
-                                child: FlatButton(
-                                  child: Text('Signup'),
-                                  color: Colors.amberAccent,
-                                  textColor: Colors.black,
-                                  onPressed: () {
-                                singup();
-                                showDialog(context: context,
-                                    builder: (BuildContext context) {
-                                      return Center(
-                                        child: Container(
-                                            color: Colors.white,
-                                            width: 250,
-                                            height: 250,
-                                            child: Center(child: Text("Signup Successfully",style: TextStyle(fontSize:15,color: Colors.black),))),
+                              width: 450,
+                              color: Colors.limeAccent[300],
 
-                                      );
-                                    }
+                              child: Column(
+                                children: [
+                                  Padding(padding: EdgeInsets.all(10),
+                                    child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 200,height: 200,),
+                                  ),
+                                  Padding(padding: EdgeInsets.all(10),
+                                      child: Text("Welcome in Ishtar",style: TextStyle(fontSize: 30),)
+                                  ),
+                                  Divider(height: 20,),
+                                  Padding(padding: EdgeInsets.all(10),
+                                      child: Text("To signup please fill the boxes below:",style: TextStyle(fontSize: 10),)
+                                  ),
 
-                                );
+                                  TextField(
+                                    controller: username,
+                                    decoration: InputDecoration(
 
-                                  },
-                                ),
+
+                                      labelText: "Username ",
+                                      labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: Colors.grey.shade300,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: Colors.red,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  TextField(
+                                    controller: email,
+                                    decoration: InputDecoration(
+
+
+                                      labelText: "Email ",
+                                      labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: Colors.grey.shade300,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: Colors.red,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 16,),
+                                  TextField(
+
+
+                                    decoration: InputDecoration(
+
+
+                                      labelText: "Name",
+                                      labelStyle: TextStyle(fontSize: 14,color: Colors.grey.shade400),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: Colors.grey.shade300,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: Colors.red,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 16,),
+                                  PasswordField(
+                                    controller: password,
+                                    color: Colors.white,
+                                    hasFloatingPlaceholder: true,
+                                    pattern: r'.*[@$#.*].*',
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(2),
+                                        borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(width: 2, color: Colors.grey.shade300)),
+                                    errorMessage: 'must contain special character either . * @ # \$',
+                                  ),
+
+                                  SizedBox(height: 16,),
+
+
+
+
+
+
+                                  SizedBox(height: 12,),
+                                  Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    child:       Container(
+                                      margin: EdgeInsets.all(20),
+                                      child: FlatButton(
+                                        child: Text('Signup'),
+                                        color: Colors.amberAccent,
+                                        textColor: Colors.black,
+                                        onPressed: () {
+                                          singup();
+                                          showDialog(context: context,
+                                              builder: (BuildContext context) {
+                                                return Center(
+                                                  child: Container(
+                                                      color: Colors.white,
+                                                      width: 250,
+                                                      height: 250,
+                                                      child: Center(child: Text("Signup Successfully",style: TextStyle(fontSize:15,color: Colors.black),))),
+
+                                                );
+                                              }
+
+                                          );
+
+                                        },
+                                      ),
+                                    ),
+                                  ),
+
+
+
+
+
+                                ],
                               ),
                             ),
 
-
-
-
-
                           ],
-                        ),
-                      ),
 
-                    ],
+                        ),
+                      )
 
                   ),
-                )
-
-                              ),
-            );
-          }
+                );
+              }
           );
         },
-          child: Icon(Icons.account_box_sharp,color: Colors.black,),),)
+          child: Text("Login",style: TextStyle(color: Colors.amber,fontWeight: FontWeight.w900,fontSize: 20),),),
+        )
         ]
 
     );
+
   }
 Future<List> singup() async {
     print(username.text);
