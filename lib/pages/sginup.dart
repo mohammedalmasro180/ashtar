@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(left: 16,right: 16),
           child: Column(
@@ -29,12 +29,12 @@ class LoginPage extends StatelessWidget{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 50,),
+                    SizedBox(height: 10,),
                     Text("Welcome,",style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),),
                     SizedBox(height: 6,),
                     Text("Sign in to continue!",style: TextStyle(fontSize: 20,color: Colors.grey.shade400),),
                     Padding(padding: EdgeInsets.all(10),
-                      child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 500,height: 500,),
+                      child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 500,height: 100,),
                     ),
 
                   ],

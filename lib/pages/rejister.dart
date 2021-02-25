@@ -32,7 +32,7 @@ class SignupPage extends StatelessWidget{
                     SizedBox(height: 6,),
                     Text("Sign in to continue!",style: TextStyle(fontSize: 20,color: Colors.grey.shade400),),
                     Padding(padding: EdgeInsets.all(10),
-                      child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 500,height: 500,),
+                      child:   Image.network("http://dev-ishtar.96.lt/assets/logo.png",width: 500,height: 100,),
                     ),
 
                   ],
