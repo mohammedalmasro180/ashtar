@@ -3,7 +3,6 @@ import 'package:ashtar/pages/home_page.dart';
 import 'package:ashtar/pages/homee.dart';
 import 'package:ashtar/pages/mytest.dart';
 import 'package:ashtar/pages/product_detail_page.dart';
-import 'package:ashtar/pages/sginup.dart';
 import 'package:ashtar/theme/colors.dart';
 import 'package:ashtar/widgets/app_bar.dart';
 import 'package:http/http.dart' as http;
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Ishtar',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: LoginPage(),
+      home: homemin(),
     );
   }
 }
