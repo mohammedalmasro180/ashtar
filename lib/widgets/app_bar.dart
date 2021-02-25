@@ -1,5 +1,6 @@
 
 
+import 'package:ashtar/pages/sginup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:passwordfield/passwordfield.dart';
 
@@ -145,6 +146,12 @@ Widget getAppBar(context){
         Padding(padding: EdgeInsets.all(10),
         child: InkWell
           (onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return LoginPage();
+
+          },
+          )
+          );
 
         },
           child: Text("Login",style: TextStyle(color: Colors.amber,fontWeight: FontWeight.w900,fontSize: 20),),),

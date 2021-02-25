@@ -133,12 +133,12 @@ class LoginPage extends StatelessWidget{
                     Text("I'm a new user.",style: TextStyle(fontWeight: FontWeight.bold),),
                     GestureDetector(
                       onTap: (){
-                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                           return SignupPage();
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return SignupPage();
 
-    },
-                           )
-                           );
+                        },
+                        )
+                        );
                       },
 
 
