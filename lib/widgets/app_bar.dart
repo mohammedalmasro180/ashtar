@@ -410,24 +410,24 @@ Widget getAppBar(context){
 
   }
 Future<List> singup() async {
-    print(username.text);
-    print(email.text);
-    print(password.text);var headers = {
-      'Authorization': 'Bearer Basic CUJDNzc5UUFTTE42RTVCU1ZVN1JYOTYyVVc2VTZRRjZD',
-      'Content-Type': 'text/plain'
-    };
-    var request = http.Request('POST', Uri.parse('http://dev-ishtar.96.lt/ishtar-backend/public/register'));
-    request.body = '''{\r\n"username":"${username.text}",\r\n"password":"${password.text}",\r\n"email":"${email.text}",\r\n"image":"pp0ppppp"\r\n}''';
-    request.headers.addAll(headers);
+  print(username.text);
+  print(email.text);
+  print(password.text);var headers = {
+    'Authorization': 'Bearer Basic CUJDNzc5UUFTTE42RTVCU1ZVN1JYOTYyVVc2VTZRRjZD',
+    'Content-Type': 'text/plain'
+  };
+  var request = http.Request('POST', Uri.parse('http://dev-ishtar.96.lt/ishtar-backend/public/register'));
+  request.body = '''{\r\n"username":"${username.text}",\r\n"password":"${password.text}",\r\n"email":"${email.text}",\r\n"image":"pp0ppppp"\r\n}''';
+  request.headers.addAll(headers);
 
-    http.StreamedResponse response = await request.send();
+  http.StreamedResponse response = await request.send();
 
-    if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
-    }
-    else {
-      print(response.statusCode);
-    }
+  if (response.statusCode == 200) {
+    print(await response.stream.bytesToString());
+  }
+  else {
+    print(response.statusCode);
+  }
 
 }
 Future<void> _showMyDialog() async {
