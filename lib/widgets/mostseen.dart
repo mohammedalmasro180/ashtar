@@ -72,7 +72,7 @@ class _mostseenState extends State<mostseen> {
 
                   color: Colors.white,
                   width: double.infinity,
-                  height:600,
+                  height:550,
                   alignment: Alignment.topCenter,
                   child: Column(
 
@@ -124,7 +124,7 @@ class _mostseenState extends State<mostseen> {
 
                             Row(
                                 children: <Widget>[
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                     child: Text("Height",
 
                                       style: TextStyle(
@@ -134,7 +134,7 @@ class _mostseenState extends State<mostseen> {
                                       ),
                                     ),
                                   ),
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                     child: Text(hiegth.toString(),
 
                                       style: TextStyle(
@@ -145,7 +145,7 @@ class _mostseenState extends State<mostseen> {
                                       ),
                                     ),
                                   ),
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                     child: Text("Width ",
 
                                       style: TextStyle(
@@ -155,7 +155,7 @@ class _mostseenState extends State<mostseen> {
                                       ),
                                     ),
                                   ),
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                     child: Text(width.toString(),
 
                                       style: TextStyle(
@@ -174,7 +174,7 @@ class _mostseenState extends State<mostseen> {
                                 children: <Widget>[
 
 
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                     child: Text("Story",
 
                                       style: TextStyle(
@@ -185,7 +185,7 @@ class _mostseenState extends State<mostseen> {
                                       ),
                                     ),
                                   ),
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                     child: Text(story.toString(),
 
                                       style: TextStyle(
@@ -206,7 +206,7 @@ class _mostseenState extends State<mostseen> {
                                 children: <Widget>[
 
 
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                     child: Text("Artist",
 
                                       style: TextStyle(
@@ -216,7 +216,7 @@ class _mostseenState extends State<mostseen> {
                                       ),
                                     ),
                                   ),
-                                  Padding(padding: const EdgeInsets.all(10),
+                                  Padding(padding: const EdgeInsets.all(8),
                                       child: InkWell(onTap: (){
                                         Navigator.push(context, MaterialPageRoute(builder: (_) =>
                                             UserProfilePage(
